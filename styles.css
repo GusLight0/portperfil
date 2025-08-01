@@ -104,6 +104,7 @@ nav {
 
 .background-especial {
     background-color: rgb(0, 0, 0);
+    border: 1px solid #00ff88;
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -160,6 +161,7 @@ strong {
 
 .text p {
     opacity: 0.9;
+    font-size: 1.4rem;
     text-shadow: 0px 0px 10px rgba(78, 78, 78, 0.555);
 }
 
@@ -215,6 +217,7 @@ strong {
     background: linear-gradient(135deg, #0f0f0f, #003f2f);
     border: 1px solid #00ff88;
     border-radius: 16px;
+    cursor: default;
     color: #e0e0e0;
     box-shadow: 0 0 12px rgba(0, 255, 136, 0.1);
 
@@ -224,6 +227,38 @@ strong {
 .box:hover {
     transform: translateY(-6px);
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.box {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 1.2s ease-in-out;
+}
+
+.carrinho {
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+.box.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.carrinho.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    transform: translateY(-100px);
+    transition: all 1.2s ease-in-out;
+    opacity: 0;
+}
+
+.footer.active {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .box h3 {
@@ -309,25 +344,26 @@ strong {
     padding: 2rem 0;
 }
 
-::-webkit-scrollbar {
-  height: 10px; /* Scroll horizontal */
+.container-slider::-webkit-scrollbar {
+  height: 15px; /* Scroll horizontal */
   width: 8px;   /* Scroll vertical */
 }
 
-::-webkit-scrollbar-track {
-  background: #0f0f0f; /* fundo do scroll */
+.container-slider::-webkit-scrollbar-track {
+  background: rgb(33, 33, 33); /* fundo do scroll */
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.container-slider::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #00ff88, #007a55);
   border-radius: 10px;
-  box-shadow: 0 0 10px #00ff88aa;
+
+  border: 3px solid rgb(33, 33, 33); 
+  background-clip: padding-box;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.container-slider::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #00ffaa, #00ff88);
-  box-shadow: 0 0 15px #00ff88;
 }
 
 .slide {
@@ -444,11 +480,10 @@ strong {
     color: #e0e0e0;
     cursor: pointer;
     box-shadow: 0 0 12px rgba(0, 255, 136, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 1.2s ease-in-out, opacity 1s ease-in-out;
 }
 
 .carrinho:hover {
-    transform: translateY(-6px);
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
 }
 
@@ -507,7 +542,7 @@ strong {
 }
 
 #contato {
-    background-color: #2f2f2f;
+    background: linear-gradient(135deg, #0f0f0f, #003d2f);
     border-radius: 50px 50px 0px 0px;
     border-top: 5px solid #00ff88;
 }
@@ -654,6 +689,18 @@ strong {
         margin: 2rem 0;
         text-align: center;
     }
+
+    .container .text h1 {
+        font-size: 2.2rem;
+    }
+
+    .container .text h2, .text h2 strong {
+        font-size: 1.8rem;
+    }
+
+    .container .text p {
+        font-size: 1.4rem;
+    }
 }
 
 @media (max-width: 620px) {
@@ -673,7 +720,9 @@ strong {
         line-height: 0;
     }
     .txt-about p {
-        font-size: 22px;
+        font-size: 16px;
+        width: 95%;
+        padding: 0.5rem 1rem;
     }
 }
 

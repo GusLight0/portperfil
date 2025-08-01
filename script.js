@@ -24,69 +24,56 @@ links.forEach(link => {
     link.addEventListener('click', fecharMenu);
 });
 
-const slides = document.querySelectorAll('.slide');
-const dotContainer = document.querySelector('.dots');
-const left = document.querySelector('.left');
-const right = document.querySelector('.right');
 
-let slide = 0
-const maxSlide = slides.length
+//animação scroll
+window.addEventListener('scroll', checkBoxes)
+window.addEventListener('scroll', checkValue)
+window.addEventListener('scroll', checkFooter)
+checkBoxes();
+checkValue();
+checkFooter();
 
-const createDots = () => {
-    slides.forEach((_, i) => {
-        dotContainer.innerHTML += `<button class="dots_dot" data-slides="${i}">.</button>`
-    })
-}
+function checkBoxes() {
+  const elements = document.querySelectorAll('.box'); // pega todos os elementos
+  for (let el of elements) {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const visiblePoint = 100;
 
-const activeDot = (slide) => {
-    document
-    .querySelectorAll('.dots_dot')
-    .forEach(e => e.classList.remove('active'));
-
-    document
-    .querySelector(`.dots_dot[data-slides="${slide}"]`)
-    .classList.add('active');
-};
-
-const goToSlide = (slide) => {
-    slides.forEach((e,i) => e.style.transform = `translateX(${100 * (i - slide)}%)`);
-};
-
-const nextSlide = () => {
-    if(slide === maxSlide - 1) {
-        slide = 0;
+    if (elementTop < windowHeight - visiblePoint) {
+      el.classList.add('active');
     } else {
-        slide++;
+      el.classList.remove('active');
     }
-
-    goToSlide(slide);
-    activeDot(slide);
+  }
 }
 
-const prevSlide = () => {
-    if(slide === 0) {
-        slide = maxSlide - 1;
+function checkValue() {
+  const elements = document.querySelectorAll('.carrinho'); // pega todos os elementos
+  for (let el of elements) {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const visiblePoint = 100;
+
+    if (elementTop < windowHeight - visiblePoint) {
+      el.classList.add('active');
     } else {
-        slide--;
+      el.classList.remove('active');
     }
-
-    goToSlide(slide);
-    activeDot(slide);
+  }
 }
 
-window.addEventListener("load", () => {
-    createDots();
-    goToSlide(slide),
-    activeDot(slide);
-})
+function checkFooter() {
+  const elements = document.querySelectorAll('.footer'); // pega todos os elementos
+  for (let el of elements) {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const visiblePoint = 100;
 
-left.addEventListener("click", prevSlide);
-right.addEventListener("click", nextSlide);
-
-dotContainer.addEventListener("click", (e) => {
-    if(e.target.classList.contains('dots_dot')) {
-        const slide = e.target.dataset.slides;
-        goToSlide(slide);
-        activeDot(slide);
+    if (elementTop < windowHeight - visiblePoint) {
+      el.classList.add('active');
+    } else {
+      el.classList.remove('active');
     }
-})
+  }
+}
