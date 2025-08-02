@@ -454,6 +454,20 @@ strong {
     font-family: "Manufacturing Consent", system-ui;
 }
 
+.lista-icons {
+    display: flex;
+    margin-top: 0.5rem;
+    list-style: none;
+    gap: 1rem;
+
+    animation: movi 2.2s ease-in-out;
+}
+
+.lista-icons li {
+    font-size: 2rem;
+    color: #00ff88;
+}
+
 .txt-servico{
     text-align: center;
 }
@@ -633,7 +647,7 @@ strong {
     }
 
     .ul li {
-        font-size: 25px;
+        font-size: 32px;
         margin: 20px 0;
     }
 
